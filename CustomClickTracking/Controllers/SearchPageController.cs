@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using CustomClickTracking.Business;
 using CustomClickTracking.Models.Pages;
 using CustomClickTracking.Models.ViewModels;
+using EPiServer.Find;
 
 namespace CustomClickTracking.Controllers
 {
@@ -24,6 +25,7 @@ namespace CustomClickTracking.Controllers
                 SearchServiceDisabled = false,
                 SearchedQuery = q
             };
+            
             if (!string.IsNullOrWhiteSpace(q))
             {
                 model.Hits = _ePiServerFindSearchService.Search(q.Trim(), maxResults);
@@ -32,6 +34,9 @@ namespace CustomClickTracking.Controllers
                 model.News = _ePiServerFindSearchService.SearchForNews(q.Trim(), maxResults);
                 model.NumberOfHits = model.Articles.Count() + model.Products.Count() + model.News.Count() + model.Hits.Count();
             }
+
+            model.TrackId = new TrackContext().Id;
+            _ePiServerFindSearchService.TrackQuery(q, model.NumberOfHits, model.TrackId);
 
             return View(model);
         }

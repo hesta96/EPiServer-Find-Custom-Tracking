@@ -9,5 +9,7 @@ namespace CustomClickTracking.Business
         IEnumerable<SearchContentModel.SearchHit> SearchForArticles(string searchText, int maxResults);
         IEnumerable<SearchContentModel.SearchHit> SearchForProducts(string searchText, int maxResults);
         IEnumerable<SearchContentModel.SearchHit> SearchForNews(string searchText, int maxResults);
+        void TrackQuery(string query, int nrOfHits, string id);
+        void TrackClick(string query, string hitId, string trackId);
     }
 }
