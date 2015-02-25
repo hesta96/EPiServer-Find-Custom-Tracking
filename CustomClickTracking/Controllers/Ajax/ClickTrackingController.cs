@@ -7,6 +7,11 @@ namespace CustomClickTracking.Controllers.Ajax
 {
     public class ClickTrackingController :  Controller
     {
+        public ActionResult Index()
+        {
+            return Json(new { msg = "Api route working" }, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public JsonResult Track(string query, string hitId, string trackId)
         {
