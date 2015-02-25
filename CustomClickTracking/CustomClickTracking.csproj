@@ -368,6 +368,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="App_Data\EPiServerDB_3f8f71fd.mdf" />
+    <Content Include="App_Data\EPiServerDB_3f8f71fd_log.ldf">
+      <DependentUpon>EPiServerDB_3f8f71fd.mdf</DependentUpon>
+    </Content>
     <Content Include="ClientResources\Images\icons\layoutIcons24x24.png" />
     <Content Include="ClientResources\Scripts\Editors\StringList.js" />
     <Content Include="ClientResources\Styles\LayoutIcons.css" />
